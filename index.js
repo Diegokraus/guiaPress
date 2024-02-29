@@ -27,6 +27,12 @@ connection
 app.use("/", categoriesController);
 app.use("/", articlesController);
 
+app.get("/", (req, res)=>{
+    Article.findAll().then(articles => {
+        res.render("index", {articles:articles});
+    })
+})
+
 
 app.get("/", (req, res) =>{
     res.render("index");
